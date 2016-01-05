@@ -1,0 +1,161 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ba_watching_products
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-05 14:14+0000\n"
+"PO-Revision-Date: 2016-01-05 11:17-0300\n"
+"Last-Translator: Filoquin <filoquin@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: ba_watching_products
+#: field:product.watching.products,active:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: ba_watching_products
+#: view:product.watching.products:ba_watching_products.view_product_watching_products_form
+#: view:wiz.watching.products:ba_watching_products.wiz_student_report_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: ba_watching_products
+#: model:ir.actions.act_window,name:ba_watching_products.wiz_watching_products
+#: model:ir.ui.menu,name:ba_watching_products.menu_wiz_watching_products
+msgid "Create label for watchin products"
+msgstr "Crear etiquetas para lista de productos"
+
+#. module: ba_watching_products
+#: field:product.watching.products,create_uid:0
+#: field:wiz.watching.products,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: ba_watching_products
+#: field:product.watching.products,create_date:0
+#: field:wiz.watching.products,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: ba_watching_products
+#: model:ir.actions.report.xml,name:ba_watching_products.watching_product_label
+msgid "Etiqueta para gondola"
+msgstr "Etiqueta para gondola"
+
+#. module: ba_watching_products
+#: view:wiz.watching.products:ba_watching_products.wiz_student_report_form
+msgid "Etiquetas de lista"
+msgstr "Etiquetas de lista"
+
+#. module: ba_watching_products
+#: view:wiz.watching.products:ba_watching_products.wiz_student_report_form
+msgid "Fecha desde"
+msgstr "Fecha desde"
+
+#. module: ba_watching_products
+#: field:product.watching.products,id:0 field:wiz.watching.products,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: ba_watching_products
+#: help:product.watching.products,active:0
+msgid ""
+"If the active field is set to False, it will allow you to hide the payment "
+"term without removing it."
+msgstr ""
+"If the active field is set to False, it will allow you to hide the payment "
+"term without removing it."
+
+#. module: ba_watching_products
+#: field:product.watching.products,write_uid:0
+#: field:wiz.watching.products,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: ba_watching_products
+#: field:product.watching.products,write_date:0
+#: field:wiz.watching.products,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: ba_watching_products
+#: field:wiz.watching.products,list_id:0
+msgid "List"
+msgstr "Lista"
+
+#. module: ba_watching_products
+#: view:wiz.watching.products:ba_watching_products.wiz_student_report_form
+msgid "Lista"
+msgstr "Lista"
+
+#. module: ba_watching_products
+#: view:product.watching.products:ba_watching_products.view_product_watching_products_form
+msgid "Make labels"
+msgstr "Crear etiqueas"
+
+#. module: ba_watching_products
+#: field:product.watching.products,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: ba_watching_products
+#: field:product.product,total_price:0
+msgid "Precio con impuestos"
+msgstr "Precio con impuestos"
+
+#. module: ba_watching_products
+#: model:ir.model,name:ba_watching_products.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: ba_watching_products
+#: field:product.watching.products,product_id:0
+msgid "Products"
+msgstr "Productos"
+
+#. module: ba_watching_products
+#: view:wiz.watching.products:ba_watching_products.wiz_student_report_form
+msgid "Report"
+msgstr "Report"
+
+#. module: ba_watching_products
+#: field:wiz.watching.products,start_date:0
+msgid "Start Date"
+msgstr "Desde la fecha"
+
+#. module: ba_watching_products
+#: field:product.watching.products,last_print:0
+msgid "Ultima impresion"
+msgstr "Ultima impresion"
+
+#. module: ba_watching_products
+#: field:product.product,total_price_condition_text:0
+msgid "condiciones"
+msgstr "condiciones"
+
+#. module: ba_watching_products
+#: view:wiz.watching.products:ba_watching_products.wiz_student_report_form
+msgid "or"
+msgstr "o"
+
+#. module: ba_watching_products
+#: field:product.watching.products,section_id:0
+msgid "section"
+msgstr "Equipo"
+
+#. module: ba_watching_products
+#: model:ir.actions.act_window,name:ba_watching_products.action_product_watching_products
+#: model:ir.model,name:ba_watching_products.model_product_watching_products
+#: model:ir.ui.menu,name:ba_watching_products.menu_product_watching_products_partner
+#: view:product.watching.products:ba_watching_products.view_product_watching_products_form
+#: view:product.watching.products:ba_watching_products.view_product_watching_products_tree
+msgid "watching products"
+msgstr "Lista de productos"

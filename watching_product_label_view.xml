@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="watching_product_label"
+            model="product.product"
+            string="Etiqueta para gondola"
+            report_type="qweb-pdf"
+            name="ba_watching_products.report_label_watching_product"/>
+    </data>
+</openerp>

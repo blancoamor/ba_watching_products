@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_product_watching_products_tree" model="ir.ui.view">
+            <field name="name">product.watching.products.tree</field>
+            <field name="model">product.watching.products</field>
+            <field name="arch" type="xml">
+                <tree string="watching products">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_product_watching_products_form" model="ir.ui.view">
+            <field name="name">product.watching.products.form</field>
+            <field name="model">product.watching.products</field>
+            <field name="arch" type="xml">
+                <form string="watching products" >
+                    <group>
+                        <field name="name"/>
+                        <field name="section_id"/>
+                        <field name="product_id"/>
+                        <field name="last_print"/>
+                        <field name="active"/>
+                    </group>
+                        <footer>
+                            <button class="oe_highlight" name="watching_products_label" string="Make labels" type="object"/>
+                            <button special="cancel" string="Cancel"/>
+                        </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="action_product_watching_products" model="ir.actions.act_window">
+            <field name="name">watching products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.watching.products</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_product_watching_products_tree"/>
+        </record>
+
+          <menuitem action="action_product_watching_products" id="menu_product_watching_products_partner" parent="base.menu_product" sequence="20" />
+
+                  <record model="ir.ui.view" id="wiz_student_report_form">
+            <field name="name">wiz.watching.products.form</field>
+            <field name="model">wiz.watching.products</field>
+            <field name="arch" type="xml">
+                <form string="Etiquetas de lista">
+                    <group>
+                        <group string="Lista">
+                            <field name="list_id"  options="{'no_create': True}" required="1"/>
+                        </group>
+                    </group>
+                    <group string="Fecha desde" col="4" colspan="4">
+                        <field name="start_date" required="1"/>
+                    </group>
+                    <footer>
+                        <button string="Report" name="watching_products_report" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="wiz_watching_products">
+            <field name="name">Create label for watchin products</field>
+            <field name="res_model">wiz.watching.products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+          <menuitem action="wiz_watching_products" id="menu_wiz_watching_products" parent="base.menu_product" sequence="25" />
+
+    </data>
+</openerp>
