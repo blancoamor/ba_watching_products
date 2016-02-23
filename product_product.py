@@ -73,9 +73,9 @@ class product_product(osv.osv):
                 sum_tax += price_pricelist[31] * tax.amount
                 for conditions_id in product_pricelist['pricelist_sale_condition'] :
                     if conditions_id['fee'] == 1 :
-                        res[product.id]+=   conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[31] + tax.amount)) + "  | "             
+                        res[product.id]+=   conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[31] + sum_tax)) + "  | "             
                     else :
-                        res[product.id]+= conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[31] + tax.amount) / conditions_id['fee']) + ' (Total: ' +"${0:.2f}".format((price_pricelist[31] + tax.amount))  + ') | ' 
+                        res[product.id]+= conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[31] + sum_tax) / conditions_id['fee']) + ' (Total: ' +"${0:.2f}".format((price_pricelist[31] + sum_tax))  + ') | ' 
 
             for pricelist_child in product_pricelist['pricelist_id_set'] :                
                 price_pricelist=self.pool.get('product.pricelist').price_get(cr,uid,[pricelist_child['id']],product.id,1.0,1,{'uom':1,'date':unicode(date.today())})
@@ -84,9 +84,9 @@ class product_product(osv.osv):
                     sum_tax += price_pricelist[pricelist_child['id']] * tax.amount
                     for conditions_id in pricelist_child['pricelist_sale_condition'] :
                         if conditions_id['fee'] == 1 :
-                            res[product.id]+=   conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[pricelist_child['id']] + tax.amount)) + "  | "             
+                            res[product.id]+=   conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[pricelist_child['id']] + sum_tax)) + "  | "             
                         else :
-                            res[product.id]+= conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[pricelist_child['id']] + tax.amount) / conditions_id['fee']) + ' (Total: ' +"${0:.2f}".format((price_pricelist[pricelist_child['id']] + tax.amount))  + ') | ' 
+                            res[product.id]+= conditions_id['description'] + ' ' + "${0:.2f}".format((price_pricelist[pricelist_child['id']] + sum_tax) / conditions_id['fee']) + ' (Total: ' +"${0:.2f}".format((price_pricelist[pricelist_child['id']] + sum_tax))  + ') | ' 
         return res
 
 

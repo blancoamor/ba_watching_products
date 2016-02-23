@@ -43,7 +43,7 @@
 
                     <img src='/ba_watching_products/static/logo/b.png' style="padding:15px;" /><br/>
                     <div style="width:100%;padding-top:0px;text-align:center;">
-                        <span t-field="o.name" style="font-size:2.6em;font-weight: 700;"/>
+                        <span t-field="o.name" style="font-size:2.3em;font-weight: 700;"/>
                         (<span t-field="o.default_code" style="font-size:0.9em;font-weight: 700;"/>)
                     </div>
                 </div>
