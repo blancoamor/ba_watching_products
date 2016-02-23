@@ -33,6 +33,43 @@
     </t>
 </template>
 
+<template id="report_table_watching_product">
+    <t t-call="report.html_container">
+        <div class="page">
+        <t t-foreach="docs" t-as="o">
+            <div style="float:left;width:45%;height:500px;margin:0;padding:3px;border:solid #eee 1px;margin-right:4%;">
+                <div style="padding-top:5px;text-align:center">
+
+
+                    <img src='/ba_watching_products/static/logo/b.png' style="padding:15px;" /><br/>
+                    <div style="width:100%;padding-top:0px;text-align:center;">
+                        <span t-field="o.name" style="font-size:2.6em;font-weight: 700;"/>
+                        (<span t-field="o.default_code" style="font-size:0.9em;font-weight: 700;"/>)
+                    </div>
+                </div>
+                <div style="">
+                    <div style="font-size:15px;width:100%">
+                        <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price)"  /></div>
+                        <br/><br/>
+                        <div t-field="o.total_price_condition_text"  style="font-size:0.8em;font-weight: 100;padding:25px;" />                       
+                        </div>
+
+
+
+
+
+                </div>
+                <div style="font-size:0.5em;font-weight: 100">
+                     Impreso: <span t-esc="time.strftime('%d-%m-%Y')"/>
+                </div>
+            </div>
+        </t>
+        </div>
+    </t>
+</template>
+
+
+
 
 </data>
 </openerp>
