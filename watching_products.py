@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from openerp.osv import orm, osv, fields
 
 from datetime import date
@@ -9,6 +10,9 @@ class product_watching_products(osv.osv):
     _columns = {
         'name': fields.char('Name', size=64, required=True),
         'section_id' : fields.many2one('crm.case.section','section'),
+        'report' : fields.selection([('report_label_watching_product','Etiquetas gondola')],'Etiqueta'),
+        'email' : fields.char('Email'),
+
         'product_id' : fields.many2many('product.product','watching_products_rel','list_id','product_id','Products'),
 
         'last_print' : fields.datetime('Ultima impresion'),
@@ -48,7 +52,7 @@ class product_watching_products(osv.osv):
             }
             return {
                    'type': 'ir.actions.report.xml',
-                   'report_name': 'ba_watching_products.report_label_watching_product',
+                   'report_name': 'ba_watching_products.'+ cur_obj.report,
                    'datas': datas,
                }    
 

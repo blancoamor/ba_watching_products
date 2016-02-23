@@ -35,8 +35,12 @@ class product_product(osv.osv):
     def ba_price_frendly_style(self,price):
         price_text=str(price).split('.')
         return "$ " + price_text[0] + "<sup>" + price_text[1] + "</sup>"
+ 
     def _fnct_pricelist_price(self, cr, uid, ids, field_name, args, context=None):
         product_pricelist_obj = self.pool.get('product.pricelist')
+        tax_obj = self.pool.get('account.tax')
+
+
 
         if context is None:
             context = {}
@@ -49,7 +53,7 @@ class product_product(osv.osv):
                 sum_tax = 0
                 for tax in product.taxes_id:
                     sum_tax += price_pricelist[2] * tax.amount
-                    res[product.id] =str('%.2f' % (price_pricelist[2] + tax.amount) )
+                    res[product.id] =str('%.2f' % (price_pricelist[2] + sum_tax) )
 
         return res
 
