@@ -10,7 +10,7 @@ class product_watching_products(osv.osv):
     _columns = {
         'name': fields.char('Name', size=64, required=True),
         'section_id' : fields.many2one('crm.case.section','section'),
-        'report' : fields.selection([('report_label_watching_product','Etiquetas gondola')],'Etiqueta'),
+        'report' : fields.selection([('report_label_watching_product','Etiquetas gondola'),('report_corner_watching_product','Etiquetas Corner')],'Etiqueta'),
         'email' : fields.char('Email'),
 
         'product_id' : fields.many2many('product.product','watching_products_rel','list_id','product_id','Products'),

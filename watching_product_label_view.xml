@@ -6,6 +6,12 @@
             string="Etiqueta para gondola"
             report_type="qweb-pdf"
             name="ba_watching_products.report_label_watching_product"/>
+        <report id="watching_product_corner"
+            model="product.product"
+            string="Etiqueta para corner"
+            report_type="qweb-pdf"
+            name="ba_watching_products.report_corner_watching_product"/>
+
         <report id="watching_product_table"
             model="product.product"
             string="Etiqueta para muebles"
