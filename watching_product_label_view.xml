@@ -18,6 +18,15 @@
             report_type="qweb-pdf"
             name="ba_watching_products.report_table_watching_product"/>
 
+
+        <report id="watching_product_full"
+            model="product.product"
+            string="Etiqueta hoja completa"
+            report_type="qweb-pdf"
+            name="ba_watching_products.report_full_watching_product"/>
+
+
+
     </data>
 
 
