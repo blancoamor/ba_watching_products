@@ -32,60 +32,6 @@ _logger = logging.getLogger(__name__)
 
 
 
-class labels_report_parser(report_sxw.rml_parse):
-    
-    def __init__(self, cr, uid, name, context):
-        super(labels_report_parser, self).__init__(cr, uid, name, context=context)
-        self.localcontext.update({
-            'pricelist_price': self.pricelist_price,
-        })
-    
-    def pricelist_price(self, ids,pricelist,  context=None):
-        product_obj = self.pool.get('product.product')
-        product_pricelist_obj = self.pool.get('product.pricelist')
-        tax_obj = self.pool.get('account.tax')
-
-
-
-        if context is None:
-            context = {}
-        res = {}
-        for product in product_obj.browse(self.cr, self.uid, ids, context=context):
-            price_pricelist=self.pool.get('product.pricelist').price_get(self.cr,self.uid,[pricelist],product.id,1.0,1,{'uom':1,'date':unicode(date.today())})
-
-            res[product.id] = ''
-            if pricelist in price_pricelist:
-                sum_tax = 0
-                for tax in product.taxes_id:
-                    sum_tax += price_pricelist[pricelist] * tax.amount
-                    return round(price_pricelist[pricelist] + sum_tax,2) 
-        return 0    
-
-class report_label_parser(models.AbstractModel):
-    _name = 'report.ba_watching_products.report_label_watching_product'
-    _inherit = 'report.abstract_report'
-    _template = 'ba_watching_products.report_label_watching_product'
-    _wrapped_report_class = labels_report_parser
-
-class report_label_parser2(models.AbstractModel):
-    _name = 'report.ba_watching_products.report_corner_watching_product'
-    _inherit = 'report.abstract_report'
-    _template = 'ba_watching_products.report_corner_watching_product'
-    _wrapped_report_class = labels_report_parser
-
-class report_label_parser3(models.AbstractModel):
-    _name = 'report.ba_watching_products.report_table_watching_product'
-    _inherit = 'report.abstract_report'
-    _template = 'ba_watching_products.report_table_watching_product'
-    _wrapped_report_class = labels_report_parser
-
-class report_label_parser4(models.AbstractModel):
-    _name = 'report.ba_watching_products.report_full_watching_product'
-    _inherit = 'report.abstract_report'
-    _template = 'ba_watching_products.report_full_watching_product'
-    _wrapped_report_class = labels_report_parser
-
-
 class product_product(osv.osv):
 
     _name = 'product.product'
