@@ -19,9 +19,9 @@
 
 
 
-                        <div style="font-size:1.4em;font-weight: 700;float:left; padding-right:2px; width:40%;"  ><t t-raw="o.ba_price_frendly_style(o.total_price)"  /><br/><span style="font-size:0.6em;font-weight: 700;padding:0;margin:0;">Precio de lista hasta 12 Cuotas</span></div>
+                        <div style="font-size:1.4em;font-weight: 700;float:left; padding-right:2px; width:40%;"  ><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"  /><br/><span style="font-size:0.6em;font-weight: 700;padding:0;margin:0;">Precio de lista hasta 12 Cuotas</span></div>
 
-                        <div style="font-size:1.4em;font-weight: 700;float:left; padding-right:2px; width:40%;"  ><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"  /><br/><span style="font-size:0.6em;font-weight: 700;padding:0;margin:0;">Efectivo, Débito o TC 1 pago</span></div>
+                        <div style="font-size:1.4em;font-weight: 700;float:left; padding-right:2px; width:40%;"  ><t t-raw="o.ba_price_frendly_style(o.total_price)"  /><br/><span style="font-size:0.6em;font-weight: 700;padding:0;margin:0;">Efectivo, Débito o TC 1 pago</span></div>
 
 
                          </div>
@@ -54,11 +54,11 @@
                 </div><br/><br/>.
                 <div>
                     <div style="font-size:15px;width:100%;float:right">
-                        <div style="font-size:1.8em;font-weight: 700;float:left; padding-right:10px;max-width:50%; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price)"/>
+                        <div style="font-size:1.8em;font-weight: 700;float:left; padding-right:10px;max-width:50%; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"/>
                  <div style="font-size:0.4em;font-weight: 700; text-align:center;">Precio de lista hasta 12 Cuotas</div>
 
 </div>
-                        <div style="font-size:1.8em;font-weight: 700;float:left; padding-right:10px;max-width:50%;text-align:center;"><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"/>
+                        <div style="font-size:1.8em;font-weight: 700;float:left; padding-right:10px;max-width:50%;text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price)"/>
                  <div style="font-size:0.4em;font-weight: 700; text-align:center;">Contado efectivo, Débito  o TC 1 Pago</div>
 
 </div>
@@ -93,10 +93,10 @@
                 </div>
                 <div style="">
                     <div style="font-size:15px;width:100%">
-                        <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price)"/>
+                        <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"/>
 </div>
                       <div style="font-size:1.1em;font-weight: 700; text-align:center;">Precio de lista hasta 12 Cuotas</div>
-                        <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"/>
+                        <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price|)"/>
 </div>
                       <div style="font-size:1.1em;font-weight: 700; text-align:center;">Contado efectivo, Débito  o TC 1 Pago</div>
                        
@@ -132,9 +132,9 @@
                 </div>
                 <div style="">
                     <div style="font-size:15px;width:100%">
-                        <div style="font-size:8.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price)"  /></div>
+                        <div style="font-size:8.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"  /></div>
                         <br/><br/>
-                        <div t-field="o.total_price_condition_text"  style="font-size:3em;font-weight: 100;padding:25px;" />                       
+                        <div t-field="o.price_with_ta_condition_text"  style="font-size:3em;font-weight: 100;padding:25px;" />                       
                         </div>
 
 

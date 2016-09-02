@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from openerp import netsvc
 from openerp.osv import orm, osv, fields
 
 from datetime import date
@@ -38,46 +39,30 @@ class product_watching_products(osv.osv):
         #watching_products_obj = self.pool.get('product.watching.products')
         watching_products_ids = self.search( cr, uid,[('active','=',True)])
         mail_mail_obj = self.pool.get('mail.mail')
+        email_template_obj = self.pool.get('email.template')
 
         attachment_obj = self.pool.get('ir.attachment')
         ir_actions_report = self.pool.get('ir.actions.report.xml')
 
+        template = self.pool.get('ir.model.data').get_object(cr, uid, 'ba_watching_products', 'watching_product_mail')
 
+        assert template._name == 'email.template'
+        
+        _logger.info("template  %r" , template)
 
         for watching_products in self.browse(cr,uid,watching_products_ids):
             report=self.watching_products_all_label( cr, uid, [watching_products['id']], context=None)
-
-            if report : 
-
-                _logger.info("report %r" ,report)
-                attachment_id = attachment_obj.create(cr, uid,
-                              {
-                                  'name': report['report_name'],
-                                  'datas': report,
-                                  'datas_fname': report['report_name'],
-                                  'type': 'binary'
-                              }, context=context)
-
-
-                # post the message
-                values = {
-                    'model': None,
-                    'res_id': None,
-                    'subject': u"Actualizaciones " + watching_products['name'],
-                    'body': 'Actualizaciones de precios',
-                    'body_html': 'Actualizaciones de precios',
-                    'parent_id': None,
-                    'partner_ids':  None,
-                    'notified_partner_ids': None,
-                    'attachment_ids': None,
-                    'email_from': 'consultas@blancoamor.com',
-                    'email_to': 'filoquin@gmail.com',
-                }
-                mail_id = mail_mail_obj.create(cr, uid, values, context=context)
-                mail_mail_obj.send(cr, uid, [mail_id], context=context)
+            _logger.info(report)
 
 
 
+            context={}
+            context['email_send'] = "filoquin@gmail.com"
+            msg_id = email_template_obj.send_mail(cr, uid,template.id, [report['datas']['ids']], True, context=context)
+
+
+
+   
 
 
 
