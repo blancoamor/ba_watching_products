@@ -96,7 +96,7 @@
                         <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.price_with_tax)"/>
 </div>
                       <div style="font-size:1.1em;font-weight: 700; text-align:center;">Precio de lista hasta 12 Cuotas</div>
-                        <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price|)"/>
+                        <div style="font-size:4.0em;font-weight: 700; text-align:center;"><t t-raw="o.ba_price_frendly_style(o.total_price)"/>
 </div>
                       <div style="font-size:1.1em;font-weight: 700; text-align:center;">Contado efectivo, Débito  o TC 1 Pago</div>
                        
