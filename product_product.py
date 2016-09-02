@@ -45,7 +45,9 @@ class product_product(osv.osv):
 
 
     def ba_price_frendly_style(self,price):
-        price_text=str(round(price,2)).split('.')
+        if isinstance(price,float):
+            price=round(price,2)
+        price_text=str(price).split('.')
         return "$ " + price_text[0] + "<sup>" + price_text[1] + "</sup>"
  
 
