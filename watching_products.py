@@ -83,9 +83,9 @@ class product_watching_products(osv.osv):
 
     def watching_products_all_label(self, cr, uid, ids, context=None):
         #product_watching_products_obj = self.pool.get('product.watching.products')
+
         product_products_obj = self.pool.get('product.product')
         cur_obj = self.browse(cr, uid, ids, context=context)
-  
         datas = {}
         items_ids=[]
         for item in cur_obj.product_id:
@@ -95,20 +95,24 @@ class product_watching_products(osv.osv):
         #    ('write_date','>=',cur_obj.start_date)], context=context)
 
         product_ids = product_products_obj.search(cr, uid, [('id', 'in',items_ids)], context=context)
+        _logger.info("watching_products_label %r " , product_ids )
         
         values={'last_print':date.today()}
 
         self.write(cr, uid, ids, values,context=context)
         if product_ids:
             data = self.read(cr, uid, ids, context=context)[0]
+
             datas = {
             'ids': product_ids,
-            'model': 'wiz.watching.products', 
+            'model': 'product.product', 
             'form': data,
             'context':context
             }
+
             return {
                    'type': 'ir.actions.report.xml',
+                   'model': 'product.product', 
                    'report_name': 'ba_watching_products.'+ cur_obj.report,
                    'datas': datas,
                }    

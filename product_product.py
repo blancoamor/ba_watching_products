@@ -40,6 +40,22 @@ class labels_report_parser(report_sxw.rml_parse):
             'pricelist_price': self.pricelist_price,
         })
     
+    
+    def render_html(self, cr, uid, ids, data=None, context=None):
+        report_obj = self.pool['report']
+        product_obj = self.pool['product.product']
+        report = report_obj._get_report_from_name(cr, uid, self._template)
+        selected_products = product_obj.browse(cr, uid, ids, context=context)
+
+
+
+        docargs = {
+            'doc_ids': ids,
+            'doc_model': 'product.product',
+            'docs': selected_products,
+        }
+        return report_obj.render(cr, uid, ids, self._template, docargs, context=context)
+
     def pricelist_price(self, ids,pricelist,  context=None):
         product_obj = self.pool.get('product.product')
         product_pricelist_obj = self.pool.get('product.pricelist')

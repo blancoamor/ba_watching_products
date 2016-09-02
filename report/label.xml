@@ -12,6 +12,7 @@
                     <div style="float:left;width:100%;padding-top:0px;text-align:left">
                         <span t-field="o.name" style="font-size:1.5em;font-weight: 700;"/>
                         (<span t-field="o.default_code" style="font-size:0.8em;font-weight: 700;"/>)
+
                     </div>
                 </div>
                 <div style="float:left;width:100%;height:60%;overflow:hidden;text-align:left;">
@@ -27,7 +28,7 @@
                          </div>
 
 
-1
+
 
 
                 </div>
