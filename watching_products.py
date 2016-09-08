@@ -10,6 +10,8 @@ _logger = logging.getLogger(__name__)
 
 class product_watching_products(osv.osv):
     _name = "product.watching.products"
+    _inherit = "mail.thread"
+
 
     _description = "watching products"
     _columns = {
@@ -58,7 +60,7 @@ class product_watching_products(osv.osv):
 
             context={}
             context['email_send'] = "filoquin@gmail.com"
-            msg_id = email_template_obj.send_mail(cr, uid,template.id, [report['datas']['ids']], True, context=context)
+            msg_id = email_template_obj.send_mail(cr, uid,template.id, report['datas']['ids'], True, context=context)
 
 
 
@@ -82,6 +84,10 @@ class product_watching_products(osv.osv):
         product_ids = product_products_obj.search(cr, uid, [('id', 'in',items_ids)], context=context)
         
         values={'last_print':date.today()}
+
+        title='Impresion completa'
+        self.message_post(cr,uid,cur_obj['id'], 'Se genero un pdf con todos los articulos de la lista y se actualizo la fecha de impresion',title)
+
 
         self.write(cr, uid, ids, values,context=context)
         if product_ids:
@@ -113,10 +119,14 @@ class product_watching_products(osv.osv):
 
         product_ids = product_products_obj.search(cr, uid, [('id', 'in',items_ids),('write_date','>=',cur_obj.last_print)], context=context)
         
-        values={'last_print':date.today()}
 
-        self.write(cr, uid, ids, values,context=context)
         if product_ids:
+            values={'last_print':date.today()}
+
+            self.write(cr, uid, ids, values,context=context)
+            title='Impresion Parcial'
+            self.message_post(cr,uid,cur_obj['id'],  'Se genero un pdf con los articulos que se actualizaron y se actualizo la fecha de impresión',title)
+
             data = self.read(cr, uid, ids, context=context)[0]
             datas = {
             'ids': product_ids,

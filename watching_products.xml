@@ -27,8 +27,16 @@
                         <field name="report"/>
                         <field name="email"/>
 
-                        <field name="product_id"/>
-                        <field name="last_print"/>
+                <field name="product_id">
+                        <tree>
+
+                          <field name="default_code"/>
+                          <field name="name"/>
+                          <field name="write_date"/>
+
+                        </tree>
+                         </field>
+                     <field name="last_print"/>
                         <field name="active"/>
                     </group>
                         <footer>
@@ -37,7 +45,10 @@
 
                             <button special="cancel" string="Cancel"/>
                         </footer>
-
+    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
                 </form>
             </field>
         </record>
