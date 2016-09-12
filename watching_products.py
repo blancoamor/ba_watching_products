@@ -33,6 +33,7 @@ class product_watching_products(osv.osv):
 
     _defaults = {
         'active': 1,
+
     }
     _order = 'name'
 
@@ -44,25 +45,35 @@ class product_watching_products(osv.osv):
         email_template_obj = self.pool.get('email.template')
 
         attachment_obj = self.pool.get('ir.attachment')
-        ir_actions_report = self.pool.get('ir.actions.report.xml')
 
-        template = self.pool.get('ir.model.data').get_object(cr, uid, 'ba_watching_products', 'watching_product_mail')
-
-        assert template._name == 'email.template'
         
-        _logger.info("template  %r" , template)
 
         for watching_products in self.browse(cr,uid,watching_products_ids):
-            report=self.watching_products_all_label( cr, uid, [watching_products['id']], context=None)
-            _logger.info(report)
 
 
+            mail_ids = []
+            attachment_ids = []
+            email_to = "filoquin@gmail.com"  
+            attachment_data = {
+                'name': "Report Data",
+                'datas_fname': 'r.pdf', # your object File Name
+                'db_datas': {
+                   'report_name': 'ba_watching_products.'+ watching_products['report'],
+                   'datas': { 'ids': watching_products['product_id'],'model':'product.product'},
+               } 
+            }
+            attachment_ids.append (attachment_obj.create(cr, uid, attachment_data, context=context))
+            _logger.info("attachment_ids %r" , attachment_ids)
+            mail_ids.append (mail_mail_obj.create(cr, uid,
+                {
+                   'email_to': email_to,
+                   'subject': 'reporte',
+                   'body_html': '<pre>hoka</pre>' ,
+                }, context = context))
+            if attachment_ids:
 
-            context={}
-            context['email_send'] = "filoquin@gmail.com"
-            msg_id = email_template_obj.send_mail(cr, uid,template.id, report['datas']['ids'], True, context=context)
-
-
+                mail_mail_obj.write(cr, uid, mail_ids, {'attachment_ids': [(6, 0, attachment_ids)]}, context=context)
+            mail_mail_obj.send (cr, uid, mail_ids, context = context)
 
    
 
@@ -138,7 +149,24 @@ class product_watching_products(osv.osv):
                    'type': 'ir.actions.report.xml',
                    'report_name': 'ba_watching_products.'+ cur_obj.report,
                    'datas': datas,
-               }    
+               } 
+        else:
+            title='Sin nada que imprimir'
+            self.message_post(cr,uid,cur_obj['id'],  'No se genero un pdf con los articulos que se actualizaron y no se actualizo la fecha de impresión',title)
+
+            return {
+                    'type': 'ir.actions.client',
+                    'tag': 'action_warn',
+                    'name': 'Warning',
+                    'params': {
+                       'title': 'Sin nada que imprimir!',
+                       'text': 'No se genero un pdf con los articulos que se actualizaron y no se actualizo la fecha de impresión.',
+                       'sticky': True
+                    }
+                    }
+
+
+
 
 class wiz_watching_products(orm.TransientModel):
     _name = 'wiz.watching.products'
