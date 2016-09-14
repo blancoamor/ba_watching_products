@@ -118,18 +118,24 @@ class product_watching_products(osv.osv):
     def watching_products_label(self, cr, uid, ids, context=None):
         #product_watching_products_obj = self.pool.get('product.watching.products')
         product_products_obj = self.pool.get('product.product')
+        price_history_obj = self.pool.get('product.price.history')
         cur_obj = self.browse(cr, uid, ids, context=context)
   
         datas = {}
+        product_ids =[]
         items_ids=[]
         for item in cur_obj.product_id:
-            items_ids.append(item.id)
+            price_history_ids=price_history_obj.search(cr,uid,[('datetime','>=',cur_obj.last_print),('product_template_id','=',item.product_tmpl_id.id)])
+            for history in price_history_obj.browse(cr,uid,price_history_ids):
+                if history != item.standard_price:
+                    product_ids.append(item.id)
 
         #product_ids = product_products_obj.search(cr, uid, [('id', 'in', cur_obj.student_id.fname),
         #    ('write_date','>=',cur_obj.start_date)], context=context)
 
-        product_ids = product_products_obj.search(cr, uid, [('id', 'in',items_ids),('write_date','>=',cur_obj.last_print)], context=context)
+        #product_ids = product_products_obj.search(cr, uid, [('id', 'in',items_ids),('write_date','>=',cur_obj.last_print)], context=context)
         
+
 
         if product_ids:
             values={'last_print':date.today()}
@@ -143,7 +149,8 @@ class product_watching_products(osv.osv):
             'ids': product_ids,
             'model': 'wiz.watching.products', 
             'form': data,
-            'context':context
+            'context':context,
+            'attachment_use':True
             }
             return {
                    'type': 'ir.actions.report.xml',
