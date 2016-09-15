@@ -129,6 +129,8 @@ class product_watching_products(osv.osv):
             for history in price_history_obj.browse(cr,uid,price_history_ids):
                 if history != item.standard_price:
                     product_ids.append(item.id)
+                    break
+
 
         #product_ids = product_products_obj.search(cr, uid, [('id', 'in', cur_obj.student_id.fname),
         #    ('write_date','>=',cur_obj.start_date)], context=context)
