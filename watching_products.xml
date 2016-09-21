@@ -65,6 +65,7 @@
                         <field name="report"/>
                         <field name="email"/>
                         <filter string="Por equipo"  domain="[]" context="{'group_by' : 'section_id'}"/>
+                        <filter string="Mi equipo"  domain="[('section_id.member_ids','in',[user.id])]" context=""/>
                     </search>
                 </field>
             </record>
