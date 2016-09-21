@@ -133,7 +133,7 @@ class product_watching_products(osv.osv):
                                                                 order='datetime desc', limit=1)
             for history in price_history_obj.browse(cr,uid,price_history_ids):
                 _logger.info('%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
-                if history.cost != item.standard_price:
+                if int(history.cost) != int(item.standard_price):
                     changes.append(u'%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
                     product_ids.append(item.id)
                     break
