@@ -129,7 +129,8 @@ class product_watching_products(osv.osv):
             #price_history_ids=price_history_obj.search(cr,uid,[('datetime','>=',cur_obj.last_print),('product_template_id','=',item.product_tmpl_id.id)])
             #obtengo el ultimo cambio anterior a la impresion
             price_history_ids=price_history_obj.search(cr,uid,[('datetime','<=',cur_obj.last_print),
-                                                               ('product_template_id','=',item.product_tmpl_id.id)],limit=1)
+                                                               ('product_template_id','=',item.product_tmpl_id.id)],
+                                                                order='datetime desc', limit=1)
             for history in price_history_obj.browse(cr,uid,price_history_ids):
                 _logger.info('%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
                 if history.cost != item.standard_price:
