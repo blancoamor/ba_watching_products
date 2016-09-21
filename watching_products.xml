@@ -53,6 +53,25 @@
             </field>
         </record>
 
+             <record id="ba_watching_products_filter" model="ir.ui.view">
+                <field name="name">ba.watching.products.search</field>
+                <field name="model">product.watching.products</field>
+
+                <field name="arch" type="xml">
+                    <search string="Buscar lista">
+
+                        <field name="name"/>
+                        <field name="section_id"/>
+                        <field name="report"/>
+                        <field name="email"/>
+                        <filter string="Por equipo"  domain="[]" context="{'group_by' : 'section_id'}"/>
+                    </search>
+                </field>
+            </record>
+
+
+
+
         <record id="action_product_watching_products" model="ir.actions.act_window">
             <field name="name">watching products</field>
             <field name="type">ir.actions.act_window</field>
@@ -63,7 +82,7 @@
 
           <menuitem action="action_product_watching_products" id="menu_product_watching_products_partner" parent="base.menu_product" sequence="20" />
 
-                  <record model="ir.ui.view" id="wiz_student_report_form">
+            <record model="ir.ui.view" id="wiz_student_report_form">
             <field name="name">wiz.watching.products.form</field>
             <field name="model">wiz.watching.products</field>
             <field name="arch" type="xml">
@@ -86,6 +105,8 @@
             </field>
         </record>
 
+
+
         <record model="ir.actions.act_window" id="wiz_watching_products">
             <field name="name">Create label for watchin products</field>
             <field name="res_model">wiz.watching.products</field>
@@ -94,6 +115,8 @@
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
+
+
 
     </data>
 </openerp>

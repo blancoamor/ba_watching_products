@@ -2,7 +2,7 @@
 from openerp import netsvc
 from openerp.osv import orm, osv, fields
 
-from datetime import date
+from datetime import date , datetime
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -94,7 +94,7 @@ class product_watching_products(osv.osv):
 
         product_ids = product_products_obj.search(cr, uid, [('id', 'in',items_ids)], context=context)
         
-        values={'last_print':date.today()}
+        values={'last_print':datetime.now()}
 
         title='Impresion completa'
         self.message_post(cr,uid,cur_obj['id'], 'Se genero un pdf con todos los articulos de la lista y se actualizo la fecha de impresion',title)
@@ -125,9 +125,12 @@ class product_watching_products(osv.osv):
         product_ids =[]
         items_ids=[]
         for item in cur_obj.product_id:
-            price_history_ids=price_history_obj.search(cr,uid,[('datetime','>=',cur_obj.last_print),('product_template_id','=',item.product_tmpl_id.id)])
+            #price_history_ids=price_history_obj.search(cr,uid,[('datetime','>=',cur_obj.last_print),('product_template_id','=',item.product_tmpl_id.id)])
+            #obtengo el ultimo cambio anterior a la impresion
+            price_history_ids=price_history_obj.search(cr,uid,[('datetime','<=',cur_obj.last_print),
+                                                               ('product_template_id','=',item.product_tmpl_id.id)],limit=1)
             for history in price_history_obj.browse(cr,uid,price_history_ids):
-                if history != item.standard_price:
+                if history.cost != item.standard_price:
                     product_ids.append(item.id)
                     break
 
@@ -140,7 +143,7 @@ class product_watching_products(osv.osv):
 
 
         if product_ids:
-            values={'last_print':date.today()}
+            values={'last_print':datetime.now()}
 
             self.write(cr, uid, ids, values,context=context)
             title='Impresion Parcial'
