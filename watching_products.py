@@ -133,7 +133,7 @@ class product_watching_products(osv.osv):
             for history in price_history_obj.browse(cr,uid,price_history_ids):
                 _logger.info('%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
                 if history.cost != item.standard_price:
-                    changes.append('%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
+                    changes.append(u'%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
                     product_ids.append(item.id)
                     break
 
@@ -151,7 +151,7 @@ class product_watching_products(osv.osv):
             self.write(cr, uid, ids, values,context=context)
             title='Impresion Parcial'
 
-            self.message_post(cr,uid,cur_obj['id'],  'Se genero un pdf con los articulos que se actualizaron y se actualizo la fecha de impresión ' + "|".join(changes),title)
+            self.message_post(cr,uid,cur_obj['id'],  u'Se genero un pdf con los articulos que se actualizaron y se actualizo la fecha de impresión ' + "|".join(changes),title)
 
             data = self.read(cr, uid, ids, context=context)[0]
             datas = {
