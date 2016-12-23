@@ -30,6 +30,38 @@ from datetime import date
 import logging
 _logger = logging.getLogger(__name__)
 
+class product_template(osv.osv):
+
+    _inherit = 'product.template' 
+
+    def _set_list_price_price(self, cr, uid, product_tmpl_id, value, context=None):
+        ''' Store the standard price change in order to be able to retrieve the list_price of a product template for a given date'''
+        if context is None:
+            context = {}
+        price_history_obj = self.pool['product.sale.price.history']
+        user_company = self.pool.get('res.users').browse(cr, uid, uid, context=context).company_id.id
+        company_id = context.get('force_company', user_company)
+        price_history_obj.create(cr, uid, {
+            'product_template_id': product_tmpl_id,
+            'list_price': value,
+            'company_id': company_id,
+        }, context=context)
+    def create(self, cr, uid, vals, context=None):
+        ''' Store the initial standard price in order to be able to retrieve the cost of a product template for a given date'''
+        product_template_id = super(product_template, self).create(cr, uid, vals, context=context)
+        self._set_list_price_price(cr, uid, product_template_id, vals.get('list_price', 0.0), context=context)
+
+        return product_template_id
+    def write(self, cr, uid, ids, vals, context=None):
+        ''' Store the standard price change in order to be able to retrieve the list_price of a product template for a given date'''
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        if 'list_price' in vals:
+            for prod_template_id in ids:
+                self._set_list_price_price(cr, uid, prod_template_id, vals['list_price'], context=context)
+
+        res = super(product_template, self).write(cr, uid, ids, vals, context=context)
+        return res
 
 
 class product_product(osv.osv):
@@ -109,11 +141,38 @@ class product_product(osv.osv):
 
 
 
-
     _columns = {
         'total_price': fields.function(_fnct_pricelist_price, string='Precio con impuestos',type='char', size=256,),
         'total_price_condition_text': fields.function(_fnct_sales_condition_text, string='condiciones',type='text',),
     }
 
 
+class produce_sale_price_history(osv.osv):
+    """
+    Keep track of the ``product.template`` sale prices as they are changed.
+    """
+
+    _name = 'product.sale.price.history'
+    _rec_name = 'datetime'
+    _order = 'datetime desc'
+
+    _columns = {
+        'company_id': fields.many2one('res.company', required=True),
+        'product_template_id': fields.many2one('product.template', 'Product Template', required=True, ondelete='cascade'),
+        'datetime': fields.datetime('Historization Time'),
+        'list_price': fields.float('Historized list price'),
+    }
+
+    def _get_default_company(self, cr, uid, context=None):
+        if 'force_company' in context:
+            return context['force_company']
+        else:
+            company = self.pool['res.users'].browse(cr, uid, uid,
+                context=context).company_id
+            return company.id if company else False
+
+    _defaults = {
+        'datetime': fields.datetime.now,
+        'company_id': _get_default_company,
+    }
 
