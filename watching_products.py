@@ -118,7 +118,7 @@ class product_watching_products(osv.osv):
     def watching_products_label(self, cr, uid, ids, context=None):
         #product_watching_products_obj = self.pool.get('product.watching.products')
         product_products_obj = self.pool.get('product.product')
-        price_history_obj = self.pool.get('product.price.history')
+        price_history_obj = self.pool.get('product.sale.price.history')
         cur_obj = self.browse(cr, uid, ids, context=context)
   
         datas = {}
@@ -132,9 +132,9 @@ class product_watching_products(osv.osv):
                                                                ('product_template_id','=',item.product_tmpl_id.id)],
                                                                 order='datetime desc', limit=1)
             for history in price_history_obj.browse(cr,uid,price_history_ids):
-                _logger.info('%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
-                if int(history.cost) != int(item.standard_price):
-                    changes.append(u'%s anterior %s actualizado a %s' % (item.default_code,history.cost , item.standard_price))
+                _logger.info('%s anterior %s actualizado a %s' % (item.default_code,history.list_price , item.list_price))
+                if int(history.list_price) != int(item.list_price):
+                    changes.append(u'%s anterior %s actualizado a %s' % (item.default_code,history.list_price , item.list_price))
                     product_ids.append(item.id)
                     break
 
