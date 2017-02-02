@@ -5,57 +5,54 @@
             <t t-call="report.html_container">
                 <div class="page">
                     <t t-foreach="docs" t-as="o">
-                        <div style="height:100px;margin:0;padding:3px;border:solid #eee 1px;page-break-inside: avoid;">
-                            <div style="float:left;width:100%;height:40%;overflow:hidden;padding-top:5px;text-align:left">
+                        <div style="height:100px;margin:0;page-break-inside: avoid; overflow:hidden;width:100%;">
+                        
+    <div style="vertical-align:top;float:right;width:10%;height:100px;overflow:hidden;text-align:left;">
+
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.default_code, 95, 95)" />
+
+                            </div>
+                            <div style="vertical-align:top;float:left;width:90%;height:40%;overflow:hidden;padding-top:5px;text-align:left">
                                 <div style="float:left;width:100%;padding-top:0px;text-align:left">
                                     <span t-field="o.name" style="font-size:1.5em;font-weight: 700;" />
                         (<span t-field="o.default_code" style="font-size:0.8em;font-weight: 300;" />)
                     </div>
                             </div>
-                            <div style="float:left;width:100%;height:60%;overflow:hidden;text-align:left;">
-
-
-                                <div style="width:38%; border-top:1px solid #000;  display:inline-block; vertical-align:top;background-color:#DDD;">
-                                    <div style="font-size:0.9em;font-weight: 700; text-align:left;width:38%; display:inline-block; overflow:hidden; vertical-align:top; padding:2px;">
+                            <div style="float:left;width:90%;height:60%;overflow:hidden;text-align:left;">
+                                <div style="width:48%; border-top:1px solid #000;  display:inline-block; vertical-align:top;background-color:#DDD;">
+                                    <div style="font-size:0.9em;font-weight: 700; text-align:left;width:35%; display:inline-block; overflow:hidden; vertical-align:top; padding:2px;">
                                        PRECIO CONTADO
                                         <div style="font-size:0.5em;font-weight: 300; text-align:left;">
-                                           EFECTIVO, TARJETA DE DÉBITO<br/> ó TARJETA DE CRÉDITO EN 1 PAGO
-                                        </div>
-                                    </div>
-                                    <div style="font-size:3.0em;font-weight: 700; text-align:center; display:inline-block;width:58%; vertical-align:top;">
+                                           EFECTIVO, TARJETA DE DÉBITO<br /> ó TARJETA DE CRÉDITO EN 1 PAGO
+                                        </div></div>
+                                    <div style="font-size:2.9em;font-weight: 700; text-align:center; display:inline-block;width:62%; vertical-align:top;">
                                         <t t-raw="o.ba_price_frendly_style(o.total_price)" />
                                     </div>
                                 </div>
-
-                                <div style="width:58%; border-top:1px solid #000; display:inline-block;">
+                                <div style="width:50%; border-top:1px solid #000; display:inline-block;">
                                     <div style="font-size:1em;font-weight: 300; text-align:left;width:25%; display:inline-block; overflow:hidden; vertical-align:top;">
-                                            12 CUOTAS <br/>
+                                            12 CUOTAS <br />
                                             FIJAS DE         
                                    </div>
-                                    <div style="font-size:2.0em;font-weight: 700; text-align:left; display:inline-block;width:38%; vertical-align:top;">
+                                    <div style="font-size:2.0em;font-weight: 700; text-align:left; display:inline-block;width:33%; vertical-align:top;">
                                         <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
-                                      <div style="font-size:0.3em;font-weight:300; magin:auto; text-align:left; ">
-                                            PTF.: $ <span t-field="o.price_with_tax"/> - TEA.: 00.00%
+                                        <div style="font-size:0.3em;font-weight:300; magin:auto; text-align:left; ">
+                                            PTF.: $ <span t-field="o.price_with_tax" /> - TEA.: 28.61%
                                         </div>
                                     </div>
-
                                     <div style="text-align:left; display:inline-block;width:25%; vertical-align:top;">
-                                        <div style="font-size:1.0em;font-weight: 700; text-align:left;">
-                                           C.T.F. : 25.00 %
+                                        <div style="font-size:1.5em;font-weight: 700; text-align:left;">
+                                           C.T.F. : 36.25 %
                                           <div style="font-size:0.5em;font-weight:300;  text-align:left; ">
                                             COSTO FINANCIERO TOTAL 
-                                          </div>
-                                        </div>
+                                          </div></div>
                                     </div>
-
-
                                 </div>
-
-
                             </div>
+                        
 
-              
                         </div>
+
                     </t>
                 </div>
             </t>
@@ -66,60 +63,100 @@
                     <t t-foreach="docs" t-as="o">
                         <div style="width:400px;height:250px;margin:0;padding:3px;border:solid #eee 1px;float:left;page-break-inside: avoid;font-size:10px;">
                             <div style="padding-top:5px; overflow  :hidden;">
-                                    <span t-field="o.name" style="font-size:1.6em;font-weight: 700;" />
+                                <span t-field="o.name" style="font-size:1.4em;font-weight: 700;" />
                         (<span t-field="o.default_code" style="font-size:0.8em;font-weight: 700;" />)
 
                             </div>
-
-                                <div style="font-size:10px;width:100%; border-top:1px solid #000; border-bottom:1px solid #000;background-color:#DDD;">
-                                    <div style="font-size:2.0em;font-weight: 700; text-align:center;">
+                            <div style="font-size:10px;width:100%; border-top:1px solid #000; border-bottom:1px solid #000;background-color:#DDD;">
+                                <div style="font-size:2.0em;font-weight: 700; text-align:center;">
                                        PRECIO CONTADO
                                     </div>
-                                    <div style="font-size:0.7em;font-weight: 300; text-align:center;">
+                                <div style="font-size:0.7em;font-weight: 300; text-align:center;">
                                        EFECTIVO, TARJETA DE DÉBITO ó TARJETA DE CRÉDITO EN 1 PAGO
                                     </div>
-                                    <div style="font-size:4.0em;font-weight: 700; text-align:center;">
-                                        <t t-raw="o.ba_price_frendly_style(o.total_price)" />
-                                    </div>
+                                <div style="font-size:4.0em;font-weight: 700; text-align:center;">
+                                    <t t-raw="o.ba_price_frendly_style(o.total_price)" />
                                 </div>
-
-
-
-
-                                <div style="font-size:10px;width:100%">
-                                        <div style="font-size:1.5em;font-weight:300;width:48%; text-align:right; display:inline-block">
-                                            12 CUOTAS <br/>
+                            </div>
+                            <div style="font-size:10px;width:28%;display:inline-block;vertical-align:top; overflow:hidden; ">
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.default_code, 100, 100)" />
+                            </div>
+                            <div style="font-size:10px;width:70%;display:inline-block;vertical-align:top;">
+                                <div style="font-size:1.3em;font-weight:300;width:40%; text-align:right; display:inline-block">
+                                            12 CUOTAS 
                                             FIJAS DE
                                         </div>
-                                        <div style="font-size:3.8em;font-weight: 700; text-align:center;width:48%; display:inline-block">
-                                            <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
+                                <div style="font-size:3.8em;font-weight: 700; text-align:center;width:58%; display:inline-block">
+                                    <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
+                                </div>
+                                <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
+                                            PTF.: $ <span t-field="o.price_with_tax" /> - TEA.: 28.61%
                                         </div>
-                                        <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
-                                            PTF.: $ <span t-field="o.price_with_tax"/> - TEA.: 00.00%
-                                        </div>
+                                <div style="font-size:2.0em;font-weight: 700; text-align:center;">
+                                           C.T.F. : 36.25 %
 
-                                        <div style="font-size:2.0em;font-weight: 700; text-align:center;">
-                                           C.T.F. : 25.00 %
-
                                         </div>
-                                        <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block">
+                                <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block">
                                             COSTO FINANCIERO TOTAL 
                                         </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+        <template id="report_carpita_watching_product">
+            <t t-call="report.html_container">
+                <div class="page">
+                    <t t-foreach="docs" t-as="o">
+                        <div style="width:350px;height:250px;margin:0;padding:3px;border:solid #eee 1px;float:left;page-break-inside: avoid;font-size:10px;">
+                            <div style="padding-top:5px; overflow  :hidden;">
+                                <span t-field="o.name" style="font-size:1.3em;font-weight: 700;" />
+                        (<span t-field="o.default_code" style="font-size:0.8em;font-weight: 700;" />)
 
-
+                            </div>
+                            <div style="font-size:10px;width:100%; border-top:1px solid #000; border-bottom:1px solid #000;background-color:#DDD;">
+                                <div style="font-size:2.0em;font-weight: 700; text-align:center;">
+                                       PRECIO CONTADO
+                                    </div>
+                                <div style="font-size:0.7em;font-weight: 300; text-align:center;">
+                                       EFECTIVO, TARJETA DE DÉBITO ó TARJETA DE CRÉDITO EN 1 PAGO
+                                    </div>
+                                <div style="font-size:4.0em;font-weight: 700; text-align:center;">
+                                    <t t-raw="o.ba_price_frendly_style(o.total_price)" />
                                 </div>
+                            </div>
+                            <div style="font-size:10px;width:28%;display:inline-block;vertical-align:top; overflow:hidden; ">
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.default_code, 100, 100)" />
+                            </div>
+                            <div style="font-size:10px;width:70%;display:inline-block;vertical-align:top;">
+                                <div style="font-size:1.4em;font-weight:300;width:40%; text-align:right; display:inline-block">
+                                            12 CUOTAS 
+                                            FIJAS DE
+                                        </div>
+                                <div style="font-size:3.8em;font-weight: 700; text-align:center;width:58%; display:inline-block">
+                                    <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
+                                </div>
+                                <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
+                                            PTF.: $ <span t-field="o.price_with_tax" /> - TEA.: 28.61%
+                                        </div>
+                                <div style="font-size:2.0em;font-weight: 700; text-align:center;">
+                                           C.T.F. : 36.25 %
 
-            </div>
+                                        </div>
+                                <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block">
+                                            COSTO FINANCIERO TOTAL 
+                                        </div>
+                            </div>
+                        </div>
                     </t>
                 </div>
             </t>
         </template>
         <template id="report_table_watching_product">
             <t t-call="report.html_container">
-
                 <div class="page" style="font-face: 'Open Sans Condensed', sans-serif;font-weight: 300;">
-<style type="text/css">
-<![CDATA[
+                    <style type="text/css"><![CDATA[
 /* Arvo */
 @font-face {
   font-family: 'Arvo';
@@ -145,9 +182,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
-]]>
-</style>
-
+]]></style>
                     <t t-foreach="docs" t-as="o">
                         <div style="float:left;width:45%;height:300px;margin:0;padding:3px;border:solid #eee 1px;margin-right:4%;page-break-inside: avoid;">
                             <div style="padding-top:5px;text-align:center">
@@ -169,26 +204,23 @@
                                     </div>
                                 </div>
                                 <div style="width:100%">
-                                        <div style="font-size:1.5em;font-weight:300;width:48%; text-align:right; display:inline-block">
-                                            12 CUOTAS <br/>
+                                    <div style="font-size:1.5em;font-weight:300;width:48%; text-align:right; display:inline-block">
+                                            12 CUOTAS <br />
                                             FIJAS DE
                                         </div>
-                                        <div style="font-size:3.8em;font-weight: 700; text-align:center;width:48%; display:inline-block">
-                                            <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
+                                    <div style="font-size:3.8em;font-weight: 700; text-align:center;width:48%; display:inline-block">
+                                        <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
+                                    </div>
+                                    <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
+                                            PTF.: $ <span t-field="o.price_with_tax" /> - TEA.: 28.61%
                                         </div>
-                                        <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
-                                            PTF.: $ <span t-field="o.price_with_tax"/> - TEA.: 00.00%
-                                        </div>
+                                    <div style="font-size:2.0em;font-weight: 700; text-align:center;">
+                                           C.T.F. : 36.25 %
 
-                                        <div style="font-size:2.0em;font-weight: 700; text-align:center;">
-                                           C.T.F. : 25.00 %
-
                                         </div>
-                                        <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block">
+                                    <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block">
                                             COSTO FINANCIERO TOTAL 
                                         </div>
-
-
                                 </div>
                             </div>
                             <img src="/ba_watching_products/static/logo/b.png" style="padding:15px;" />

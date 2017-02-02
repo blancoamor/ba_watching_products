@@ -26,6 +26,13 @@
             name="ba_watching_products.report_full_watching_product"/>
 
 
+        <report id="carpita_watching_product"
+            model="product.product"
+            string="Etiqueta Carpita"
+            report_type="qweb-pdf"
+            name="ba_watching_products.report_carpita_watching_product"/>
+
+
 
 
     </data>
