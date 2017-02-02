@@ -34,7 +34,7 @@
                                             12 CUOTAS <br />
                                             FIJAS DE         
                                    </div>
-                                    <div style="font-size:2.0em;font-weight: 700; text-align:left; display:inline-block;width:33%; vertical-align:top;">
+                                    <div style="font-size:1.8em;font-weight: 700; text-align:left; display:inline-block;width:33%; vertical-align:top;">
                                         <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
                                         <div style="font-size:0.3em;font-weight:300; magin:auto; text-align:left; ">
                                             PTF.: $ <span t-field="o.price_with_tax" /> - TEA.: 28.61%
@@ -86,7 +86,7 @@
                                             12 CUOTAS 
                                             FIJAS DE
                                         </div>
-                                <div style="font-size:3.8em;font-weight: 700; text-align:center;width:58%; display:inline-block">
+                                <div style="font-size:3.5em;font-weight: 700; text-align:center;width:58%; display:inline-block">
                                     <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
                                 </div>
                                 <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
@@ -134,7 +134,7 @@
                                             12 CUOTAS 
                                             FIJAS DE
                                         </div>
-                                <div style="font-size:3.8em;font-weight: 700; text-align:center;width:58%; display:inline-block">
+                                <div style="font-size:3.4em;font-weight: 700; text-align:center;width:58%; display:inline-block">
                                     <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
                                 </div>
                                 <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
@@ -208,7 +208,7 @@
                                             12 CUOTAS <br />
                                             FIJAS DE
                                         </div>
-                                    <div style="font-size:3.8em;font-weight: 700; text-align:center;width:48%; display:inline-block">
+                                    <div style="font-size:3.4em;font-weight: 700; text-align:center;width:48%; display:inline-block">
                                         <t t-raw="o.ba_price_frendly_style(o.price_with_tax / 12)" />
                                     </div>
                                     <div style="font-size:0.8em;font-weight:300; magin:auto; text-align:center; display:block ; border-top:1px solid #000;">
