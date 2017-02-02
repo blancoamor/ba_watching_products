@@ -18,6 +18,7 @@ class product_watching_products(osv.osv):
         'name': fields.char('Name', size=64, required=True),
         'section_id' : fields.many2one('crm.case.section','section'),
         'report' : fields.selection([('report_label_watching_product','Etiquetas gondola'),
+                                     ('report_carpita_watching_product','Etiqueta Carpita'),
                                      ('report_corner_watching_product','Etiquetas Corner'),
                                      ('report_table_watching_product','Etiquetas mueble'),
                                      ('report_full_watching_product','Hoja completa'),
